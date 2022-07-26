@@ -1,0 +1,152 @@
+
+
+
+.login-principal{
+
+    display: grid;
+   
+   width: 550px;
+    padding: 50px 50px;
+    margin-top: 50px;
+    justify-content: center;
+    background-color: #F9F9F9;
+    margin-left: 500px;
+   
+}
+
+
+.login-principal button{
+    background-color: #74A414;
+    width: 100px;
+    justify-self: end;
+}
+
+body{
+    background-color: #F2F2F2;
+}
+
+
+
+
+
+.titulo{
+    background-color: #8b0000;
+    display: flex;
+   align-items: center;
+    justify-content: space-between;
+    height: 60px;
+}
+
+
+.painel {
+    display: flex;
+    margin-left: 50px;
+    gap: 10px;
+}
+
+.admin{
+    display: flex;
+    margin-right: 50px;
+    gap: 10px;
+   
+}
+
+.titulo img{
+    width: 30px;
+    
+
+}
+
+.admin img{
+    height: 15px;
+    width: 15px;
+}
+
+.painel h1{
+    font-size: 25px;
+}
+
+
+.admin h3{
+    font-size: 15px;
+}
+
+
+
+
+.opcoes{
+    display: flex;
+    gap: 20px;
+    padding-left: 50px;
+    background-color: #FFFFFF;
+    
+   
+}
+
+.inicio img{
+    display: grid;
+    height: 35px;
+    width:35px;
+    justify-items: center;
+  
+   
+}
+
+
+.inicio{
+    display: grid;
+    justify-items: center;
+    border-left: 1px solid black;
+    padding-left: 20px;
+    justify-content: center;
+    color: #B2AFAA;
+    padding-top: 10px;
+}
+
+
+
+
+.adm{
+    margin-top: 100px;
+    padding-top: 0px;
+    margin-left: 10px;
+    display: grid;
+    background-color: #ffffff;
+    
+
+    
+    
+
+   
+}
+
+.form{
+    display: flex;
+    gap:20px;
+    max-width: 600px;
+    margin-left: 50px;
+    
+    
+    
+}
+
+
+.administradores{
+     align-self: center;
+    background-color: #F5F2ED;
+    
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 40px;
+    padding-top: 10px;
+    padding-left: 10px;
+    
+}
+
+
+
+.adm button{
+    width: 100px;
+    justify-self: start;
+    margin-left: 50px;
+}
