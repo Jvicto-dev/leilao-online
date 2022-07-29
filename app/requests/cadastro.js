@@ -2,7 +2,7 @@ function verifyValues(array_values) {
     var verify = []
 
     array_values.forEach(element => {
-        if (element == "" || element == null) {
+        if (element == "" || element == null || element == '---') {
             verify.push('F')
         } else {
             verify.push('V')
@@ -26,6 +26,15 @@ function cadastroPessoaFisica() {
     var telefone = $("#telefone").val()
     var celular = $("#celular").val()
 
+    //endereco
+    var cep = $("#cep").val()
+    var bairro = $("#bairro").val()
+    var numero = $("#numero").val()
+    var logradouro = $("#logradouro").val()
+    var complemento = $("#complemento").val()
+    var estado = $("#estado").val()
+    var cidade = $("#cidade").val()
+
     var senha = $("#senha").val()
     var re_senha = $("#re_senha").val()
 
@@ -35,7 +44,9 @@ function cadastroPessoaFisica() {
         ano: $("#ano").val()
     }
 
-    var array_values = [nome, email, cpf, rg, sexo, celular, aniversario.dia, aniversario.mes, aniversario.ano]
+    var array_values = [nome, email, cpf, rg, sexo, celular, aniversario.dia, aniversario.mes, aniversario.ano, senha, re_senha
+        , cep, bairro, numero, logradouro, estado, cidade
+    ]
 
 
     if (!verifyValues(array_values)) {
@@ -52,16 +63,8 @@ function cadastroPessoaFisica() {
                 'warning'
             )
         } else {
-            axios.post('app/Actions/Cadastro-pessoa-fisica.php', {
-                values: [
-                    [
-                        nome, email, cpf, rg, sexo, telefone, celular, aniversario
-                    ]
-                ]
-            }).then((res) => {
-                // console.log(res)
-            })
 
+            $("#form-cadastro-pessoa-fisica").submit()
         }
     }
 
@@ -76,7 +79,7 @@ function dia() {
 
     var day = "";
 
-    for (let i = 1; i < 31; i++) {
+    for (let i = 1; i <= 31; i++) {
 
         day += `<option value="` + i + `">` + i + `</option>`
 

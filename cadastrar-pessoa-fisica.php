@@ -29,7 +29,7 @@ session_start();
     <!-- Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-    <title>Leilões Online</title>
+    <title>Cadastro</title>
 </head>
 
 <body>
@@ -68,143 +68,159 @@ session_start();
 
                         <br><br>
 
-                        <div class="row">
+                        <form action="./app/Actions/Cadastro-pessoa-fisica.php" method="POST" id="form-cadastro-pessoa-fisica" enctype="multipart/form-data">
+                            <div class="row">
 
-                            <div class="card-group">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h6>Dados pessoais <strong>(Pessoa Física)</strong></h6>
+                                <div class="card-group">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h6>Dados pessoais <strong>(Pessoa Física)</strong></h6>
+                                        </div>
+                                        <div class="card-body">
+
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Nome</label>
+                                                <input type="text" class="form-control" id="nome" name="nome">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Email</label>
+                                                <input type="text" class="form-control" id="email" name="email">
+                                            </div>
+
+
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Cpf</label>
+                                                <input type="text" class="form-control" id="cpf" name="cpf">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">RG</label>
+                                                <input type="text" class="form-control" id="rg" name="rg">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Aniversario</label>
+
+                                                <div class="input-group mb-3">
+
+                                                    <select class="form-select" id="dia" name="dia">
+                                                    </select>
+
+                                                    <select class="form-select" id="mes" name="mes">
+                                                    </select>
+
+                                                    <select class="form-select" id="ano" name="ano">
+                                                    </select>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Sexo</label>
+
+                                                <select class="form-select" id="sexo" name="sexo">
+                                                    <option value="1">Masculino</option>
+                                                    <option value="2">Feminino</option>
+                                                    <option value="3">Outro</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Telefone</label>
+                                                <input type="text" class="form-control" id="telefone" name="telefone">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Celular</label>
+                                                <input type="text" class="form-control" id="celular" name="celular">
+                                            </div>
+
+                                        </div>
                                     </div>
-                                    <div class="card-body">
-
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">Nome</label>
-                                            <input type="text" class="form-control" id="nome">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h6>Informações de endereço</h6>
                                         </div>
+                                        <div class="card-body">
 
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">Email</label>
-                                            <input type="text" class="form-control" id="email">
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Cep</label>
+                                                <input type="text" class="form-control" id="cep" name="cep">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Bairro</label>
+                                                <input type="text" class="form-control" id="bairro" name="bairro">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Numero</label>
+                                                <input type="text" class="form-control" id="numero" name="numero">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Logradouro</label>
+                                                <input type="text" class="form-control" id="logradouro" name="logradouro">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Complemento</label>
+                                                <input type="text" class="form-control" id="complemento" name="complemento">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Estado</label>
+                                                <input type="text" class="form-control" id="estado" name="estado">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Cidade</label>
+                                                <input type="text" class="form-control" id="cidade" name="cidade">
+                                            </div>
+
                                         </div>
+                                    </div>
+                                </div>
+                                <div>
 
+                                    <hr>
 
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">Cpf</label>
-                                            <input type="text" class="form-control" id="cpf">
-                                        </div>
+                                    <div class="row">
 
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">RG</label>
-                                            <input type="text" class="form-control" id="rg">
-                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Senha</label>
+                                                <input type="text" class="form-control" id="senha" name="senha">
+                                            </div>
 
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">Aniversario</label>
-
-                                            <div class="input-group mb-3">
-
-
-                                                <select class="form-select" id="dia">
-                                                </select>
-
-                                                <select class="form-select" id="mes">
-                                                </select>
-
-                                                <select class="form-select" id="ano">
-                                                </select>
-
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Confirmar a Senha</label>
+                                                <input type="text" class="form-control" id="re_senha" name="re_senha">
                                             </div>
                                         </div>
 
-                                        <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Sexo</label>
-
-                                            <select class="form-select" id="sexo">
-                                                <option value="1">Masculino</option>
-                                                <option value="2">Feminino</option>
-                                                <option value="3">Outro</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Telefone</label>
-                                            <input type="text" class="form-control" id="telefone">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Celular</label>
-                                            <input type="text" class="form-control" id="celular">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Documento de identidade</label>
+                                                <input type="file" class="form-control" id="doc_identidade" name="doc_identidade">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Comprovante de residência</label>
+                                                <input type="file" class="form-control" id="doc_comp_residencia" name="doc_comp_residencia">
+                                            </div>
                                         </div>
 
                                     </div>
                                 </div>
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h6>Informações de endereço</h6>
-                                    </div>
-                                    <div class="card-body">
 
-                                        <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Cep</label>
-                                            <input type="text" class="form-control" id="">
-                                        </div>
 
-                                        <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Endereço</label>
-                                            <input type="text" class="form-control" id="">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="exampleFormControlInput1" class="form-label">Numero</label>
-                                            <input type="text" class="form-control" id="">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">Cep</label>
-                                            <input type="text" class="form-control" id="">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">Complemento</label>
-                                            <input type="text" class="form-control" id="">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">Cidade</label>
-                                            <input type="text" class="form-control" id="">
-                                        </div>
-
-                                        <div class="mb-3">
-                                            <label for="" class="form-label">Estado</label>
-                                            <input type="text" class="form-control" id="">
-                                        </div>
-                                    </div>
-                                </div>
 
                             </div>
-
-
-                            <div>
-                                <hr>
-
-                                <div class="mb-3 col-md-6">
-                                    <label for="" class="form-label">Senha</label>
-                                    <input type="text" class="form-control" id="senha">
-                                </div>
-
-                                <div class="mb-3 col-md-6">
-                                    <label for="" class="form-label">Confirmar a Senha</label>
-                                    <input type="text" class="form-control" id="re_senha">
-                                </div>
+                            <div class="d-grid gap-2 mt-3">
+                                <button class="btn btn-primary" type="button" onclick="cadastroPessoaFisica()">CADASTRAR</button>
                             </div>
-
-
-
-                        </div>
-                        <div class="d-grid gap-2 mt-3">
-                            <button class="btn btn-primary" type="button" onclick="cadastroPessoaFisica()">CADASTRAR</button>
-                        </div>
-
+                        </form>
                     </div>
 
 
@@ -247,8 +263,6 @@ session_start();
 
 
     <script>
-       
-
         var mask_cpf = {
             mask: [{
                 mask: '000.000.000-00',
@@ -273,7 +287,6 @@ session_start();
         IMask(document.getElementById('cpf'), mask_cpf);
         IMask(document.getElementById('telefone'), telefone);
         IMask(document.getElementById('celular'), celular);
-
     </script>
 
 </body>

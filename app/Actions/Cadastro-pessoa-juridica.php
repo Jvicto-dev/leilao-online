@@ -17,8 +17,8 @@ $http = (object)$post;
 // Informações do Cliente
 $obCliente->setNome($http->nome);
 $obCliente->setEmail($http->email);
-$obCliente->setCpf($http->cpf);
-$obCliente->setRg($http->rg);
+$obCliente->setCnpj($http->cnpj);
+$obCliente->setIe($http->ie);
 $obCliente->setDia($http->dia);
 $obCliente->setMes($http->mes);
 $obCliente->setAno($http->ano);
@@ -41,4 +41,4 @@ $ObEndereco->setBairro($http->bairro);
 
 
 
-AdministradorClass::cadastroPessoaFisica($obCliente, $ObEndereco);
+AdministradorClass::cadastroPessoaJuridica($obCliente, $ObEndereco);

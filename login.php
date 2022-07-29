@@ -1,24 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require __DIR__ . "/vendor/autoload.php";
+
+use \App\Models\Messages;
+
+session_start();
+
+// Crio de maneira rapida um hash de senha
+// echo password_hash('Lavor2022#@', PASSWORD_DEFAULT);
+
+?>
+<!doctype html>
+<html lang="pt-Br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-</head>
+    <!-- SweetAlert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <title>Login</title>
 </head>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
 <body>
-    <br><br><br><br><br><br>
+    <?php include __DIR__ . '/app/templates/header.php'; ?>
 
-
+    <br><br>
 
     <div class="container-fluid">
         <div class="row">
@@ -29,7 +46,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3>Login do Admin</h3>
+                        <h3>Login</h3>
                     </div>
                     <div class="card-body">
                         <form method="post" action="app/Actions/ActionLoginHash.php">
@@ -57,28 +74,21 @@
         </div>
     </div>
 
-    <!-- <div class="login-principal">
-        <h1>Login do Admin</h1>
-        <p>Por favor, forneça seus dados de login</p>
-        <div class="input-group mb-3 login">
 
-            <span class="input-group-text" id="basic-addon1"><img src="img/sombra-de-usuario-masculino.png"></span>
-            <input type="text" class="form-control" placeholder="Seu login aqui" aria-label="Username"
-                aria-describedby="basic-addon1">
-        </div>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-        <div class="input-group mb-3 login">
+    <script src="./app/public/js/Mensagens/Message.js"></script>
 
-            <span class="input-group-text" id="basic-addon1"><img src="img/chaves.png"></span>
-            <input type="text" class="form-control" placeholder="Sua senha aqui" aria-label="Username"
-                aria-describedby="basic-addon1">
-        </div>
-
-        <button type="button" class="btn btn-success">Entrar</button>
-    </div> -->
-
+    <script src="https://unpkg.com/imask"></script>
 
 </body>
 
 </html>
+
+<?php Messages::Mensagens(); ?>

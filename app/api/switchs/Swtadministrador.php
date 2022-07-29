@@ -13,9 +13,9 @@ class Swtadministrador
     {
         switch ($action) {
 
-            case "cadastro-pessoa-fisica":
-                echo json_encode(AdministradorClass::cadastroPessoaFisica($values));
-                break;
+            // case "cadastro-pessoa-fisica":
+            //     echo json_encode(AdministradorClass::cadastroPessoaFisica($values));
+            //     break;
 
         }
     }
