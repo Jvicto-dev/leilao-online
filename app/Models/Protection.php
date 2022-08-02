@@ -4,7 +4,7 @@ namespace App\Models;
 
 Class Protection
 {
-    public function Protect(){
+    public static function Protect(){
         if(!isset($_SESSION)){
             session_start();
             if(!isset($_SESSION['user'])){
