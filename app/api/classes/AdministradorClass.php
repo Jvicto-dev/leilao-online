@@ -73,9 +73,10 @@ class AdministradorClass
         $obCliente->setDoc_identidade($doc_identidade[0]);
         $obCliente->setDoc_comp_residencia($doc_comp_residencia[0]);
 
-        // Criando o cadastro do cliente
+        // Criando o cadastro do cliente(pessoa juridica)
         $cliente = ClienteClass::cadastrarPessoaJuridica($obCliente);
 
+        
         // id do cliente para foreinKey 
         $ObEndereco->setIdUsuarioFk($cliente[0]);
 
@@ -86,8 +87,14 @@ class AdministradorClass
 
         if ($doc_identidade[1] && $doc_comp_residencia[1] && $cliente[1] && $endereco_cliente[1]) {
             $_SESSION['mensagem'] = [
-                'msg' => "Cadastro concluido com sucesso!",
+                'msg' => "Cadastro de pessoa juridica concluido com sucesso!",
                 'type' => 'success'
+            ];
+            header('Location:../../login.php');
+        } else {
+            $_SESSION['mensagem'] = [
+                'msg' => "Erro na operação !",
+                'type' => 'error'
             ];
             header('Location:../../login.php');
         }

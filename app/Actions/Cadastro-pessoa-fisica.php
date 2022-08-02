@@ -39,6 +39,4 @@ $ObEndereco->setUf($http->estado);
 $ObEndereco->setLocalidade($http->cidade);
 $ObEndereco->setBairro($http->bairro);
 
-
-
 AdministradorClass::cadastroPessoaFisica($obCliente, $ObEndereco);

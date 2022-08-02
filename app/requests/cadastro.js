@@ -16,6 +16,17 @@ function verifyValues(array_values) {
     }
 }
 
+function verifyExtension(arq) {
+
+    let validos = /(\.jpg|\.png|\.gif|\.pdf|\.txt|\.doc|\.docx)$/i;
+
+    if (validos.test(arq)) {
+        return true
+    } else {
+        return false
+    }
+}
+
 function cadastroPessoaFisica() {
     // dados pessoais
     var nome = $("#nome").val()
@@ -33,7 +44,11 @@ function cadastroPessoaFisica() {
     var logradouro = $("#logradouro").val()
     var complemento = $("#complemento").val()
     var estado = $("#estado").val()
-    var cidade = $("#cidade").val()
+    var localidade = $("#localidade").val()
+
+    //documentos
+    var doc_identidade = $("#doc_identidade").val()
+    var doc_comp_residencia = $("#doc_comp_residencia").val()
 
     var senha = $("#senha").val()
     var re_senha = $("#re_senha").val()
@@ -45,6 +60,68 @@ function cadastroPessoaFisica() {
     }
 
     var array_values = [nome, email, cpf, rg, sexo, celular, aniversario.dia, aniversario.mes, aniversario.ano, senha, re_senha
+        , cep, bairro, numero, logradouro, estado, localidade
+    ]
+
+    if (!verifyValues(array_values) || !(verifyExtension(doc_identidade)) || !(verifyExtension(doc_comp_residencia))) {
+        Swal.fire(
+            'Ops !',
+            'Você deixou algum campo em branco',
+            'warning'
+        )
+    } else {
+        if (senha != re_senha) {
+            Swal.fire(
+                'Ops !',
+                'As senha fornecidas são diferentes !',
+                'warning'
+            )
+        } else {
+            $("#form-cadastro-pessoa-fisica").submit()
+        }
+    }
+
+
+
+
+
+
+}
+
+function cadastroPessoaJuridica() {
+    // dados pessoais
+    var nome = $("#nome").val()
+    var email = $("#email").val()
+    var cnpj = $("#cnpj").val()
+    var ie = $("#ie").val()
+    var sexo = $("#sexo").val()
+    var telefone = $("#telefone").val()
+    var celular = $("#celular").val()
+
+    //endereco
+    var cep = $("#cep").val()
+    var bairro = $("#bairro").val()
+    var numero = $("#numero").val()
+    var logradouro = $("#logradouro").val()
+    var complemento = $("#complemento").val()
+    var estado = $("#estado").val()
+    var localidade = $("#localidade").val()
+
+    //documentos
+    var doc_identidade = $("#doc_identidade").val()
+    var doc_comp_residencia = $("#doc_comp_residencia").val()
+
+    //senha
+    var senha = $("#senha").val()
+    var re_senha = $("#re_senha").val()
+
+    var aniversario = {
+        dia: $("#dia").val(),
+        mes: $("#mes").val(),
+        ano: $("#ano").val()
+    }
+
+    var array_values = [nome, email, cnpj, ie, sexo, celular, aniversario.dia, aniversario.mes, aniversario.ano, senha, re_senha
         , cep, bairro, numero, logradouro, estado, cidade
     ]
 
@@ -63,7 +140,6 @@ function cadastroPessoaFisica() {
                 'warning'
             )
         } else {
-
             $("#form-cadastro-pessoa-fisica").submit()
         }
     }

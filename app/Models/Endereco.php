@@ -7,14 +7,12 @@ class Endereco
     private $cep;
     private $logradouro;
     private $numero;
-    // private $endereco;
     private $localidade;
     private $uf;
     private $bairro;
     private $complemento;
     private $idUsuarioFk;
     
-
     /**
      * Get the value of cep
      */ 
@@ -174,24 +172,4 @@ class Endereco
 
         return $this;
     }
-
-    // /**
-    //  * Get the value of endereco
-    //  */ 
-    // public function getEndereco()
-    // {
-    //     return $this->endereco;
-    // }
-
-    // /**
-    //  * Set the value of endereco
-    //  *
-    //  * @return  self
-    //  */ 
-    // public function setEndereco($endereco)
-    // {
-    //     $this->endereco = $endereco;
-
-    //     return $this;
-    // }
 }

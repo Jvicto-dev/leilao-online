@@ -50,6 +50,12 @@ class ClienteClass
 
     public static function cadastrarPessoaJuridica($obCliente)
     {
+
+        // echo "<pre>";
+        // print_r($obCliente);
+        // echo "</pre>";
+        // exit;
+
         $cmd = "INSERT INTO `users` (
         `id_users`,
         `nome`,

@@ -5,40 +5,21 @@ use \App\Models\Messages;
 
 session_start();
 
-// Crio de maneira rapida um hash de senha
-// echo password_hash('Lavor2022#@', PASSWORD_DEFAULT);
+$titulo = "Cadastro pessoa juridica";
+
 
 ?>
 <!doctype html>
 <html lang="pt-Br">
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php include __DIR__ . '/app/templates/head.php'; ?>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-
-    <!-- SweetAlert -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
-    <!-- Select2 -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
-    <title>Cadastro</title>
-</head>
 
 <body>
     <div class="container">
         <!-- Menu -->
         <?php include __DIR__ . '/app/templates/header.php'; ?>
     </div>
-
-
 
 
     <div class="container-fluid">
@@ -69,7 +50,7 @@ session_start();
                         <br><br>
 
                         <div class="row">
-                            <form action="./app/Actions/Cadastro-pessoa-fisica.php" method="POST" id="form-cadastro-pessoa-fisica" enctype="multipart/form-data">
+                            <form action="./app/Actions/Cadastro-pessoa-juridica.php" method="POST" id="form-cadastro-pessoa-fisica" enctype="multipart/form-data">
                                 <div class="row">
 
                                     <div class="card-group">
@@ -139,49 +120,56 @@ session_start();
 
                                             </div>
                                         </div>
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h6>Informações de endereço</h6>
-                                            </div>
-                                            <div class="card-body">
 
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Cep</label>
-                                                    <input type="text" class="form-control" id="cep" name="cep">
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Bairro</label>
-                                                    <input type="text" class="form-control" id="bairro" name="bairro">
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label for="exampleFormControlInput1" class="form-label">Numero</label>
-                                                    <input type="text" class="form-control" id="numero" name="numero">
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label for="" class="form-label">Logradouro</label>
-                                                    <input type="text" class="form-control" id="logradouro" name="logradouro">
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label for="" class="form-label">Complemento</label>
-                                                    <input type="text" class="form-control" id="complemento" name="complemento">
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label for="" class="form-label">Estado</label>
-                                                    <input type="text" class="form-control" id="estado" name="estado">
-                                                </div>
-
-                                                <div class="mb-3">
-                                                    <label for="" class="form-label">Cidade</label>
-                                                    <input type="text" class="form-control" id="cidade" name="cidade">
-                                                </div>
-
-                                            </div>
+                                       <div class="card">
+                                        <div class="card-header">
+                                            <h6>Informações de endereço</h6>
                                         </div>
+                                        <div class="card-body">
+
+                                            <div class="form-group">
+                                                <label>Cep</label>
+                                                <div class="input-group mb-3 mt-1">
+                                                    <input type="text" id="cep" name="cep" class="form-control" placeholder="buscar cep...">
+                                                    <span class="input-group-append">
+                                                        <button class="file-upload-browse btn btn-primary" type="button" onclick="getCep()">buscar</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Logradouro</label>
+                                                <input type="text" class="form-control" id="logradouro" name="logradouro">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Complemento</label>
+                                                <input type="text" class="form-control" id="complemento" name="complemento">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Bairro</label>
+                                                <input type="text" class="form-control" id="bairro" name="bairro">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Localidade</label>
+                                                <input type="text" class="form-control" id="localidade" name="localidade">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="" class="form-label">Estado</label>
+                                                <input type="text" class="form-control" id="estado" name="estado">
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="exampleFormControlInput1" class="form-label">Numero</label>
+                                                <input type="text" class="form-control" id="numero" name="numero">
+                                            </div>
+
+                                        </div>
+                                    </div>
+
                                     </div>
                                     <div>
 
@@ -219,12 +207,12 @@ session_start();
 
                                 </div>
                                 <div class="d-grid gap-2 mt-3">
-                                    <button class="btn btn-primary" type="button" onclick="cadastroPessoaFisica()">CADASTRAR</button>
+                                    <button class="btn btn-primary" type="button" onclick="cadastroPessoaJuridica()">CADASTRAR</button>
                                 </div>
                             </form>
                         </div>
 
-                    
+
 
                     </div>
 
@@ -246,52 +234,65 @@ session_start();
 
 
 
- <!-- Footer -->
+    <!-- Footer -->
 
- <?php include __DIR__ . '/app/templates/footer.php'; ?>
+    <?php include __DIR__ . '/app/templates/footer.php'; ?>
 
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-<!-- Axios -->
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script src="./app/public/js/Mensagens/Message.js"></script>
+    <script src="./app/public/js/Mensagens/Message.js"></script>
 
-<script src="https://unpkg.com/imask"></script>
-
-
-<script src="./app/requests/cadastro.js"></script>
+    <script src="https://unpkg.com/imask"></script>
 
 
-<script>
-    var mask_cpf = {
-        mask: [{
-            mask: '000.000.000-00',
-            maxLength: 11
-        }]
-    }
+    <script src="./app/requests/cadastro.js"></script>
 
-    var telefone = {
-        mask: [{
-            mask: '(00) 0 0000-0000',
-            maxLength: 11
-        }]
-    }
 
-    var celular = {
-        mask: [{
-            mask: '(00) 0 0000-0000',
-            maxLength: 11
-        }]
-    }
+    <script>
+        var mask_cnpj = {
+            mask: [{
+                mask: '00.000.000/0000-00',
+                maxLength: 11
+            }]
+        }
 
-    IMask(document.getElementById('cpf'), mask_cpf);
-    IMask(document.getElementById('telefone'), telefone);
-    IMask(document.getElementById('celular'), celular);
-</script>
+        var telefone = {
+            mask: [{
+                mask: '(00) 0 0000-0000',
+                maxLength: 11
+            }]
+        }
+
+        var celular = {
+            mask: [{
+                mask: '(00) 0 0000-0000',
+                maxLength: 11
+            }]
+        }
+
+        IMask(document.getElementById('cnpj'), mask_cnpj);
+        IMask(document.getElementById('telefone'), telefone);
+        IMask(document.getElementById('celular'), celular);
+
+        function getCep() {
+            var cep = $("#cep").val()
+            axios.get(`https://viacep.com.br/ws/${cep}/json/`).then(res => {
+
+                console.log(res)
+                $("#logradouro").val(res.data.logradouro)
+                $("#complemento").val(res.data.complemento)
+                $("#bairro").val(res.data.bairro)
+                $("#localidade").val(res.data.localidade)
+                $("#uf").val(res.data.uf)
+            })
+        }
+    </script>
 
 </body>
 
