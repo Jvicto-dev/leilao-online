@@ -3,6 +3,7 @@
 namespace App\api\classes;
 
 use \App\api\Sql;
+use App\api\classes\AdministradorClass;
 
 class FooterClass
 {
@@ -15,8 +16,49 @@ class FooterClass
 
     public static function updateLogoFooter($array)
     {
-        echo "<pre>";
-        print_r($array);
-        echo "</pre>";
+        // Arquivo em si
+        $image = AdministradorClass::insertFile($array);
+
+        // Nome do arquivo em questão
+        $name = $image[0];
+
+        // Array para validação
+        $valida = [];
+
+        // busca pelo arquivo no banco de dados
+        $cmd2 = "SELECT * FROM `footer` WHERE footer.id_footer = 1";
+        $response2 = Sql::use($cmd2, []);
+
+
+
+        // condicional
+        if (file_exists(__DIR__ . '../../../files/' . $response2[0]['logo_footer'])) {
+            $deletar = unlink(__DIR__ . '../../../files/' . $response2[0]['logo_footer']);
+            if ($deletar) {
+                array_push($valida, 'V');
+            } else {
+                array_push($valida, 'F');
+            }
+        }
+
+
+
+        // Altera o arquivo no banco de dados por um novo
+        $cmd = "UPDATE `footer` SET `logo_footer` = ? WHERE `footer`.`id_footer` = 1";
+        $response = Sql::returnInsert($cmd, [$name]);
+
+        if (in_array("F", $valida) || !($response[1]) || !($image[1])) {
+            http_response_code(500);
+            echo json_encode(
+                [
+                    false // deu erro
+                ]
+            );
+        } else {
+            http_response_code(201); // deu certo !
+            echo json_encode([
+                true
+            ]);
+        }
     }
 }

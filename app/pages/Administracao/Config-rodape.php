@@ -95,15 +95,10 @@ $titulo = "Configuração rodapé";
 
                                     <img src="./../../public/img/camera.png" alt="Selecione uma imagem" id="imgPhoto">
                                     <form id="my-form">
-                                        <input type="file" id="flImage" name="fImage" class="form-control">
-                                        <!-- <div class="progress">
-                                            <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 5%">5%</div>
-                                        </div> -->
-                                        <label for="progress-bar">0%</label>
-                                        <progress id="progress-bar" value="0" max="100"> </progress>
-                                        <br>
+                                        <input type="file" id="flImage" name="fImage" class="form-control mt-3">
 
-                                        <button type="submit" class="btn btn-primary btn-lg mt-3">Enviar <i class="fa-solid fa-floppy-disk"></i></button>
+
+                                        <button type="button" onclick="sendImage()" class="btn btn-primary btn-lg mt-3">Enviar <i class="fa-solid fa-floppy-disk"></i></button>
 
                                     </form>
 
@@ -143,8 +138,6 @@ $titulo = "Configuração rodapé";
     <!-- <script src="./../../../app/requests/cadastro.js"></script> -->
 
     <script>
-     
-
         let photo = document.getElementById('imgPhoto');
         let file = document.getElementById('flImage');
 
@@ -167,9 +160,19 @@ $titulo = "Configuração rodapé";
             reader.readAsDataURL(file.files[0]);
         });
 
- 
 
-      
+        function sendImage() {
+
+            const formData = new FormData();
+            const file = document.getElementById('flImage');
+            const img = file.files[0];
+            formData.append('image', img);
+
+            axios.post('../../Actions/ActionFooterLogo.php', formData).then((res) => {
+                console.log(res)
+            })
+
+        }
     </script>
 
 </body>

@@ -18,6 +18,26 @@ class AdministradorClass
         echo "</pre>";
     }
 
+    public static function insertFile($file)
+    {
+        if (isset($file)) {
+            // Instancia de Upload
+            $obUpload = new Upload($file);
+
+            //Gera um nome aleatorio
+            $obUpload->generateNewName();
+
+            //Move os arquivos de upload
+            $sucesso = $obUpload->Upload(__DIR__ . '/../../files/', false);
+
+            if ($sucesso) {
+                return [$obUpload->getBasename(), true];
+            } else {
+                return ["problemas ao enviar", false];
+            }
+        }
+    }
+
     public static function cadastroPessoaFisica(Cliente $obCliente, Endereco $ObEndereco)
     {
         // envio do documento de identidade
@@ -59,14 +79,12 @@ class AdministradorClass
     {
         // envio do documento de identidade
         $doc_identidade = AdministradorClass::insertFile(
-            $obCliente->getDoc_identidade(),
-            '.pdf'
+            $obCliente->getDoc_identidade()
         );
 
         // envio do documento de comp residencia
         $doc_comp_residencia = AdministradorClass::insertFile(
-            $obCliente->getDoc_comp_residencia(),
-            '.pdf'
+            $obCliente->getDoc_comp_residencia()
         );
 
         // setando valores dos nomes dos documentos
@@ -99,23 +117,5 @@ class AdministradorClass
             header('Location:../../login.php');
         }
     }
-    public static function insertFile($file, $extensao)
-    {
-        if (isset($file)) {
-            // Instancia de Upload
-            $obUpload = new Upload($file);
-
-            //Gera um nome aleatorio
-            $obUpload->generateNewName();
-
-            //Move os arquivos de upload
-            $sucesso = $obUpload->Upload(__DIR__ . '/../../files/', false, $extensao);
-
-            if ($sucesso) {
-                return [$obUpload->getBasename() . $extensao, true];
-            } else {
-                return ["problemas ao enviar", false];
-            }
-        }
-    }
+   
 }

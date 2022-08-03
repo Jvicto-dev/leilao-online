@@ -122,12 +122,12 @@ class Upload{
    * @param  boolean $overwrite
    * @return boolean
    */
-  public function upload($dir, $overwrite = true, $extensao){
+  public function upload($dir, $overwrite = true){
     //VERIFICAR ERRO
     if($this->error != 0) return false;
 
     //CAMINHO COMPLETO DE DESTINO
-    $path = $dir.'/'.$this->getPossibleBasename($dir,$overwrite).$extensao;
+    $path = $dir.'/'.$this->getPossibleBasename($dir,$overwrite);
 
     //MOVE O ARQUIVO PARA A PASTA DE DESTINO
     return move_uploaded_file($this->tmpName,$path);
