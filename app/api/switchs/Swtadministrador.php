@@ -17,6 +17,9 @@ class Swtadministrador
                 echo json_encode(FooterClass::updateLogoFooter($values));
                 break;
 
+            case "infors-footer":
+                echo json_encode(FooterClass::updateInforsFooter($values));
+                break;
         }
     }
 }

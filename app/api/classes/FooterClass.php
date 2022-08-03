@@ -61,4 +61,29 @@ class FooterClass
             ]);
         }
     }
+
+
+    public static function updateInforsFooter($array)
+    {
+
+        $cmd = "UPDATE `footer` SET 
+        `email_contato` = ?, 
+        `telefone` = ?,
+        `whatsapp` = ?,
+        `localizacao` = ?,
+        `localizacao_maps` = ?
+        WHERE `footer`.`id_footer` = 1";
+
+        $response = Sql::returnInsert($cmd, $array[0]);
+
+        if ($response[1]) {
+            return [
+                true, http_response_code(201)
+            ];
+        } else {
+            return [
+                false, http_response_code(500)
+            ];
+        }
+    }
 }

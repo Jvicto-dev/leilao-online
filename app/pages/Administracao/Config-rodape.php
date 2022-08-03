@@ -46,34 +46,36 @@ $titulo = "Configuração rodapé";
 
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Email Contato</label>
-                                    <input type="email" class="form-control" id="" value="<?= $infor_footer['email_contato'] ?>">
+                                    <input type="text" class="form-control" id="email_contato" value="<?= $infor_footer['email_contato'] ?>">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Telefone</label>
-                                    <input type="email" class="form-control" id="" value="<?= $infor_footer['telefone'] ?>">
+                                    <input type="text" class="form-control" id="telefone" value="<?= $infor_footer['telefone'] ?>">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Whatsapp</label>
-                                    <input type="email" class="form-control" id="" value="<?= $infor_footer['whatsapp'] ?>">
+                                    <input type="text" class="form-control" id="whatsapp" value="<?= $infor_footer['whatsapp'] ?>">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Localização</label>
-                                    <input type="email" class="form-control" id="" value="<?= $infor_footer['localizacao'] ?>">
+                                    <input type="text" class="form-control" id="localizacao" value="<?= $infor_footer['localizacao'] ?>">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Localização link</label>
-                                    <textarea class="form-control"> <?= $infor_footer['localizacao_maps'] ?></textarea>
+                                    <textarea class="form-control" id="localizacao_link"> <?= $infor_footer['localizacao_maps'] ?></textarea>
                                     <label for="floatingTextarea"></label>
                                 </div>
 
                                 <div class="mb-3">
                                     <iframe width="400" height="200" id="gmap_canvas" src="<?= $infor_footer['localizacao_maps'];  ?>" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-
                                 </div>
+
+                                <button type="button" onclick="allInfors()" class="btn btn-primary btn-lg mt-3">Alterar <i class="fa-solid fa-floppy-disk"></i></button>
+
 
 
 
@@ -135,44 +137,10 @@ $titulo = "Configuração rodapé";
     <script src="https://unpkg.com/imask"></script>
 
     <!-- Requisições -->
-    <!-- <script src="./../../../app/requests/cadastro.js"></script> -->
+    <script src="./../../../app/requests/footer.js"></script>
 
     <script>
-        let photo = document.getElementById('imgPhoto');
-        let file = document.getElementById('flImage');
-
-        photo.addEventListener('click', () => {
-            file.click();
-        });
-
-        file.addEventListener('change', () => {
-
-            if (file.files.length <= 0) {
-                return;
-            }
-
-            let reader = new FileReader();
-
-            reader.onload = () => {
-                photo.src = reader.result;
-            }
-
-            reader.readAsDataURL(file.files[0]);
-        });
-
-
-        function sendImage() {
-
-            const formData = new FormData();
-            const file = document.getElementById('flImage');
-            const img = file.files[0];
-            formData.append('image', img);
-
-            axios.post('../../Actions/ActionFooterLogo.php', formData).then((res) => {
-                console.log(res)
-            })
-
-        }
+     
     </script>
 
 </body>
