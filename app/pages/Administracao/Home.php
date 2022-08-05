@@ -41,7 +41,9 @@ $titulo = "Home";
                                 <div class="card">
                                     <div class="card-body">
                                         <h1><i class="fa-solid fa-image"></i></h1>
-                                        <h3>Logotipo</h3>
+                                        <a href="Config-logo.php">
+                                            <h3>Logotipo</h3>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +51,9 @@ $titulo = "Home";
                                 <div class="card">
                                     <div class="card-body">
                                         <h1><i class="fa-solid fa-location-dot"></i></h1>
-                                        <h3>Google Maps</h3>
+                                        <a href="Config-google-maps.php">
+                                            <h3>Google Maps</h3>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +71,9 @@ $titulo = "Home";
                                 <div class="card">
                                     <div class="card-body">
                                         <h1><i class="fa-solid fa-images"></i></h1>
-                                        <h3>Slide</h3>
+                                        <a href="Config-slide.php">
+                                            <h3>Slides</h3>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +96,9 @@ $titulo = "Home";
                                 <div class="card">
                                     <div class="card-body">
                                         <h1><i class="fa-solid fa-globe"></i></h1>
-                                        <h3>Dados da empresa</h3>
+                                        <a href="Config-dados-empresa.php">
+                                            <h3>Dados da Empresa</h3>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +106,9 @@ $titulo = "Home";
                                 <div class="card">
                                     <div class="card-body">
                                         <h1><i class="fa-solid fa-hand-holding-dollar"></i></h1>
-                                        <h3>dados bancarios</h3>
+                                        <a href="Config-dados-bancarios.php">
+                                            <h3>Dados Bancarios</h3>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
