@@ -2,12 +2,12 @@
 require __DIR__ . "/../../../vendor/autoload.php";
 
 use \App\Models\Messages;
-use App\api\classes\FooterClass;
+use App\api\classes\GoogleMapsClass;
 use App\Models\Protection;
 
 Protection::Protect();
 
-$infor_footer = FooterClass::getInforsFooter()[0];
+$infor_google_maps = GoogleMapsClass::getInforMaps()[0];
 
 // session_start();
 $titulo = "Configuração Google maps";
@@ -46,15 +46,16 @@ $titulo = "Configuração Google maps";
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Localização link</label>
-                                    <textarea class="form-control" id="localizacao_link"> <?= $infor_footer['localizacao_maps'] ?></textarea>
+                                    <textarea class="form-control" id="link_google_maps"> <?= $infor_google_maps['link'] ?></textarea>
                                     <label for="floatingTextarea"></label>
                                 </div>
 
                                 <div class="mb-3">
-                                    <iframe width="600" height="400" id="gmap_canvas" src="<?= $infor_footer['localizacao_maps'];  ?>" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                    <iframe width="600" height="400" id="gmap_canvas" src="<?= $infor_google_maps['link'];  ?>" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                                 </div>
 
-                                <button type="button" onclick="allInfors()" class="btn btn-primary btn-lg mt-3">Alterar <i class="fa-solid fa-floppy-disk"></i></button>
+                                <button type="button" onclick="updateGoogleMaps()" class="btn btn-primary btn-lg mt-3">Alterar <i class="fa-solid fa-floppy-disk"></i></button>
+
 
                             </div>
 
@@ -85,10 +86,68 @@ $titulo = "Configuração Google maps";
     <script src="https://unpkg.com/imask"></script>
 
     <!-- Requisições -->
+    <script src="./../../../app/requests/controls.js"></script>
     <script src="./../../../app/requests/footer.js"></script>
 
     <script>
-     
+        function updateGoogleMaps() {
+
+            var link_google_maps = $("#link_google_maps").val()
+
+            if (link_google_maps == "") {
+                Swal.fire(
+                    'Ops !',
+                    'Você deixou um campo em branco !',
+                    'warning'
+                )
+            } else {
+                axios.post('../../api/controller.php', {
+                    action: "update-google-maps",
+                    values: [link_google_maps]
+                }).then((res) => {
+
+                    if (res.status == 201) {
+                        Swal.fire({
+                            // position: 'center',
+                            icon: 'success',
+                            title: 'Google maps alterado com sucesso !',
+                            showConfirmButton: true,
+                        }).then((result) => {
+                            if (result.dismiss === Swal.DismissReason.timer) {
+                                location.reload()
+                            } else if (result.isConfirmed) {
+                                location.reload()
+                            } else {
+                                location.reload()
+                            }
+                        })
+                    }
+
+                }).catch(function(error) {
+                    if (error.response) {
+                        Swal.fire(
+                            'Ops',
+                            'Ocorreu um erro com a aplicação !',
+                            'error'
+                        );
+                        // The request was made and the server responded with a status code
+                        // that falls out of the range of 2xx
+                        console.log(error.response.data);
+                        console.log(error.response.status);
+                        console.log(error.response.headers);
+                    } else if (error.request) {
+                        // The request was made but no response was received
+                        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                        // http.ClientRequest in node.js
+                        console.log(error.request);
+                    } else {
+                        // Something happened in setting up the request that triggered an Error
+                        console.log('Error', error.message);
+                    }
+                    console.log(error.config);
+                });
+            }
+        }
     </script>
 
 </body>

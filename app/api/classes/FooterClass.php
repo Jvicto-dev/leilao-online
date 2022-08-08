@@ -64,14 +64,14 @@ class FooterClass
 
 
     public static function updateInforsFooter($array)
-    {
+    {   
+      
 
         $cmd = "UPDATE `footer` SET 
         `email_contato` = ?, 
         `telefone` = ?,
         `whatsapp` = ?,
-        `localizacao` = ?,
-        `localizacao_maps` = ?
+        `localizacao` = ?
         WHERE `footer`.`id_footer` = 1";
 
         $response = Sql::returnInsert($cmd, $array[0]);

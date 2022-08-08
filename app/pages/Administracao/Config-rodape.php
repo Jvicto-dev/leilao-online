@@ -64,52 +64,11 @@ $titulo = "Configuração rodapé";
                                     <input type="text" class="form-control" id="localizacao" value="<?= $infor_footer['localizacao'] ?>">
                                 </div>
 
-                                <!-- <div class="mb-3">
-                                    <label for="" class="form-label">Localização link</label>
-                                    <textarea class="form-control" id="localizacao_link"> <?= $infor_footer['localizacao_maps'] ?></textarea>
-                                    <label for="floatingTextarea"></label>
-                                </div> -->
-
-                                <!-- <div class="mb-3">
-                                    <iframe width="400" height="200" id="gmap_canvas" src="<?= $infor_footer['localizacao_maps'];  ?>" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                                </div> -->
-
-                                <button type="button" onclick="allInfors()" class="btn btn-primary btn-lg mt-3">Alterar <i class="fa-solid fa-floppy-disk"></i></button>
-
-
-
+                                <button type="button" onclick="updateRodape()" class="btn btn-primary btn-lg mt-3">Alterar <i class="fa-solid fa-floppy-disk"></i></button>
 
 
                             </div>
 
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label for="" class="form-label">Logo footer</label>
-
-
-
-                                    <br><br>
-                                    <img src="./../../files/<?= $infor_footer['logo_footer'];  ?>" alt="" width="300px">
-
-
-                                    <hr>
-
-
-                                    <img src="./../../public/img/camera.png" alt="Selecione uma imagem" id="imgPhoto">
-                                    <form id="my-form">
-                                        <input type="file" id="flImage" name="fImage" class="form-control mt-3">
-
-
-                                        <button type="button" onclick="sendImage()" class="btn btn-primary btn-lg mt-3">Enviar <i class="fa-solid fa-floppy-disk"></i></button>
-
-                                    </form>
-
-                                    <br><br>
-
-
-                                </div>
-
-                            </div>
 
                         </div>
 
@@ -137,10 +96,73 @@ $titulo = "Configuração rodapé";
     <script src="https://unpkg.com/imask"></script>
 
     <!-- Requisições -->
+    <script src="./../../../app/requests/controls.js"></script>
     <script src="./../../../app/requests/footer.js"></script>
 
     <script>
-     
+        function updateRodape() {
+
+            var email_contato = $("#email_contato").val()
+            var telefone = $("#telefone").val()
+            var whatsapp = $("#whatsapp").val()
+            var localizacao = $("#localizacao").val()
+
+            var array_values = [email_contato, telefone, whatsapp, localizacao]
+
+            if (!verifyValues(array_values)) {
+                Swal.fire(
+                    'Ops !',
+                    'Você deixou um campo em branco !',
+                    'warning'
+                )
+            } else {
+                axios.post('../../api/controller.php', {
+                    action: "update-footer",
+                    values: [array_values]
+                }).then((res) => {
+
+                    if (res.status == 201) {
+                        Swal.fire({
+                            // position: 'center',
+                            icon: 'success',
+                            title: 'Rodapé alterado com sucesso !',
+                            showConfirmButton: true,
+                        }).then((result) => {
+                            if (result.dismiss === Swal.DismissReason.timer) {
+                                location.reload()
+                            } else if (result.isConfirmed) {
+                                location.reload()
+                            } else {
+                                location.reload()
+                            }
+                        })
+                    }
+
+                }).catch(function(error) {
+                    if (error.response) {
+                        Swal.fire(
+                            'Ops',
+                            'Ocorreu um erro com a aplicação !',
+                            'error'
+                        );
+                        // The request was made and the server responded with a status code
+                        // that falls out of the range of 2xx
+                        console.log(error.response.data);
+                        console.log(error.response.status);
+                        console.log(error.response.headers);
+                    } else if (error.request) {
+                        // The request was made but no response was received
+                        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                        // http.ClientRequest in node.js
+                        console.log(error.request);
+                    } else {
+                        // Something happened in setting up the request that triggered an Error
+                        console.log('Error', error.message);
+                    }
+                    console.log(error.config);
+                });
+            }
+        }
     </script>
 
 </body>
