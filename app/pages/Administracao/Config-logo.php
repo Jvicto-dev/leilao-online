@@ -2,15 +2,17 @@
 require __DIR__ . "/../../../vendor/autoload.php";
 
 use \App\Models\Messages;
-use App\api\classes\FooterClass;
+use App\api\classes\LogotipoClass;
 use App\Models\Protection;
 
 Protection::Protect();
 
-$infor_footer = FooterClass::getInforsFooter()[0];
+$logotipo = LogotipoClass::getLogotipos()[0];
+
+
 
 // session_start();
-$titulo = "Configuração logo";
+$titulo = "Configuração logotipo";
 
 ?>
 <!DOCTYPE html>
@@ -46,26 +48,20 @@ $titulo = "Configuração logo";
 
                                 <div class="card">
                                     <button type="button" class="btn btn-light"><b>Logo Topo</b></button>
-                                    <img src="../../files/logo.png" class="card-img-top" alt="..." width="50px;" style="border: solid 3px black; padding: 5px;">
-                                   <hr>
+                                    <img src="../../files/<?= $logotipo['logo_head']; ?>" class="card-img-top" alt="..." width="50px;" style="border: solid 3px black; padding: 5px;">
+                                    <hr>
 
                                     <div class="card-body">
 
-
-                                        <img src="./../../public/img/camera.png" alt="Selecione uma imagem" id="imgPhoto">
+                                        <img src="./../../public/img/camera.png" alt="Selecione uma imagem" id="imgPhotoHeader" class="imgPhoto">
                                         <form id="my-form">
-                                            <input style="display: none;" type="file" id="flImage" name="fImage" class="form-control mt-3">
-
-
-
+                                            <input style="display: none;" type="file" id="flImageHeader" class="form-control mt-3">
                                         </form>
-
 
                                     </div>
                                     <div class="card-footer">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button type="button" onclick="sendImage()" class="btn btn-primary btn-lg mt-3">Enviar <i class="fa-solid fa-floppy-disk"></i></button>
-
+                                            <button type="button" onclick="updateLogoHeader()" class="btn btn-primary btn-lg mt-3">Enviar <i class="fa-solid fa-floppy-disk"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -76,26 +72,20 @@ $titulo = "Configuração logo";
 
                                 <div class="card">
                                     <button type="button" class="btn btn-light"><b>Logo Rodapé</b></button>
-                                    <img src="../../files/logo.png" class="card-img-top" alt="..." width="50px;" style="border: solid 3px black; padding: 5px;">
-                                   <hr>
+                                    <img src="../../files/<?= $logotipo['logo_footer']; ?>" class="card-img-top" alt="..." width="50px;" style="border: solid 3px black; padding: 5px;">
+                                    <hr>
 
                                     <div class="card-body">
 
-
-                                        <img src="./../../public/img/camera.png" alt="Selecione uma imagem" id="imgPhoto">
+                                        <img src="./../../public/img/camera.png" alt="Selecione uma imagem" id="imgPhotoFooter" class="imgPhoto">
                                         <form id="my-form">
-                                            <input style="display: none;" type="file" id="flImage" name="fImage" class="form-control mt-3">
-
-
-
+                                            <input style="display: none;" type="file" id="flImageFooter" class="form-control mt-3">
                                         </form>
-
 
                                     </div>
                                     <div class="card-footer">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <button type="button" onclick="sendImage()" class="btn btn-primary btn-lg mt-3">Enviar <i class="fa-solid fa-floppy-disk"></i></button>
-
+                                            <button type="button" onclick="updateLogoFooter()" class="btn btn-primary btn-lg mt-3">Enviar <i class="fa-solid fa-floppy-disk"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -128,10 +118,11 @@ $titulo = "Configuração logo";
     <script src="https://unpkg.com/imask"></script>
 
     <!-- Requisições -->
-    <script src="./../../../app/requests/footer.js"></script>
+    <script src="./../../../app/requests/controls.js"></script>
+    <script src="./../../../app/requests/logotipo.js"></script>
 
     <script>
-
+       
     </script>
 
 </body>

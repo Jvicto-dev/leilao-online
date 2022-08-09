@@ -4,9 +4,11 @@ namespace App\api\switchs;
 
 use App\api\Session;
 use \App\api\classes\AdministradorClass;
+use App\api\classes\BancarioClass;
 use App\api\classes\EmpresaClass;
 use App\api\classes\FooterClass;
 use App\api\classes\GoogleMapsClass;
+use App\api\classes\SlidesClass;
 use App\api\Sql;
 
 class Swtadministrador
@@ -33,6 +35,18 @@ class Swtadministrador
 
             case "update-infor-empresa":
                 echo json_encode(EmpresaClass::updateInforEmpresa($values));
+                break;
+
+            case "update-dados-bancarios":
+                echo json_encode(BancarioClass::updateDadosBancarios($values));
+                break;
+
+            case "get-slides":
+                echo json_encode(SlidesClass::getSlides($values));
+                break;
+
+            case "deletar-slide":
+                echo json_encode(SlidesClass::deletarSlide($values));
                 break;
         }
     }

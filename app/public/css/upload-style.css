@@ -11,7 +11,7 @@
     width: 100%;
 }
 
-#imgPhoto {
+.imgPhoto {
     /* margin-top: 10%; */
     width: 25%;
     height: 25%;
@@ -24,7 +24,7 @@
     
 }
 
-#imgPhoto:hover {
+.imgPhoto:hover {
     background-color: rgb(180, 180, 180);
     border: 5px solid #111;
 }

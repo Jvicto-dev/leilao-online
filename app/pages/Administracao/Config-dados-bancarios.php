@@ -2,15 +2,15 @@
 require __DIR__ . "/../../../vendor/autoload.php";
 
 use \App\Models\Messages;
-use App\api\classes\FooterClass;
+use App\api\classes\BancarioClass;
 use App\Models\Protection;
 
 Protection::Protect();
 
-$infor_footer = FooterClass::getInforsFooter()[0];
+$info_bancarias = BancarioClass::getInfoBancarias()[0];
 
 // session_start();
-$titulo = "Configuração rodapé";
+$titulo = "Configuração dados bancarios";
 
 ?>
 <!DOCTYPE html>
@@ -46,17 +46,17 @@ $titulo = "Configuração rodapé";
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Nome completo</label>
-                                    <input type="text" class="form-control" id="">
+                                    <input type="text" class="form-control" id="nome_completo" value="<?= $info_bancarias['nome_completo'] ?>">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Cnpj</label>
-                                    <input type="text" class="form-control" id="">
+                                    <input type="text" class="form-control" id="cnpj" value="<?= $info_bancarias['cnpj'] ?>">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Banco</label>
-                                    <input type="text" class="form-control" id="">
+                                    <input type="text" class="form-control" id="banco" value="<?= $info_bancarias['banco'] ?>">
                                 </div>
 
 
@@ -66,22 +66,22 @@ $titulo = "Configuração rodapé";
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Agência</label>
-                                    <input type="text" class="form-control" id="">
+                                    <input type="text" class="form-control" id="agencia" value="<?= $info_bancarias['agencia'] ?>">
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="" class="form-label">Conta corrente</label>
-                                    <input type="text" class="form-control" id="">
+                                    <input type="text" class="form-control" id="conta_corrente" value="<?= $info_bancarias['conta_corrente'] ?>">
                                 </div>
                                 <div class="mb-3">
                                     <label for="" class="form-label">Pix</label>
-                                    <input type="text" class="form-control" id="">
+                                    <input type="text" class="form-control" id="pix" value="<?= $info_bancarias['pix'] ?>">
                                 </div>
                             </div>
 
 
                             <div class="d-grid gap-2">
-                                <button class="btn btn-primary" type="button">Editar</button>
+                                <button onclick="editarInforBancaria()" class="btn btn-primary" type="button">Editar</button>
                             </div>
 
 
@@ -112,10 +112,77 @@ $titulo = "Configuração rodapé";
     <script src="https://unpkg.com/imask"></script>
 
     <!-- Requisições -->
-    <script src="./../../../app/requests/footer.js"></script>
+    <script src="./../../../app/requests/controls.js"></script>
 
     <script>
+        IMask(document.getElementById('cnpj'), mask_cnpj);
 
+
+        function editarInforBancaria() {
+            var nome_completo = $("#nome_completo").val()
+            var cnpj = $("#cnpj").val()
+            var banco = $("#banco").val()
+            var agencia = $("#agencia").val()
+            var conta_corrente = $("#conta_corrente").val()
+            var pix = $("#pix").val()
+
+            var array_values = [nome_completo, cnpj, banco, agencia, conta_corrente, pix]
+
+            if (!verifyValues(array_values)) {
+                Swal.fire(
+                    'Ops!',
+                    'Você deixou algum campo em branco !',
+                    'warning'
+                )
+            } else {
+                axios.post('../../api/controller.php', {
+                    action: "update-dados-bancarios",
+                    values: [
+                        array_values
+                    ]
+                }).then((res) => {
+                    if (res.status == 201) {
+                        Swal.fire({
+                            // position: 'center',
+                            icon: 'success',
+                            title: 'Dados bancarios alteradas com sucesso !',
+                            showConfirmButton: true,
+                        }).then((result) => {
+                            if (result.dismiss === Swal.DismissReason.timer) {
+                                location.reload()
+                            } else if (result.isConfirmed) {
+                                location.reload()
+                            } else {
+                                location.reload()
+                            }
+                        })
+                    }
+                }).catch(function(error) {
+                    if (error.response) {
+                        Swal.fire(
+                            'Ops',
+                            'Ocorreu um erro com a aplicação !',
+                            'error'
+                        );
+                        // The request was made and the server responded with a status code
+                        // that falls out of the range of 2xx
+                        console.log(error.response.data);
+                        console.log(error.response.status);
+                        console.log(error.response.headers);
+                    } else if (error.request) {
+                        // The request was made but no response was received
+                        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                        // http.ClientRequest in node.js
+                        console.log(error.request);
+                    } else {
+                        // Something happened in setting up the request that triggered an Error
+                        console.log('Error', error.message);
+                    }
+                    console.log(error.config);
+                });
+            }
+
+        }
     </script>
 
 </body>

@@ -56,49 +56,67 @@ $titulo = "Configuração do slide";
                         </div>
 
                         <hr>
-                        <h2>Slides Atuais:</h2>
-                        <div class="card">
-                            <!-- <button type="button" class="btn btn-light">Data do Leilão: <b>25/10/2022</b></button> -->
-                            <img src="../../files/banner1.jpg" class="card-img-top" alt="...">
+                        <h2>Slides Atuais:</h2><br>
 
 
-                            <div class="card-body">
+                        <div class="row">
 
-                            </div>
-                            <div class="card-footer">
-                                <button type="button" class="btn btn-danger btn-lg">Excluir</button>
-                            </div>
+                            <div id="div_slides"></div>
+
+                            <!-- <div class="card">
+                                <div class="card-header mt-3">
+                                    <b>Banner 1</b>
+                                </div>
+                                <div class="card-body">
+                                    <img src="../../files/banner1.jpg" class="card-img-top" alt="..." width="50px;" style="border: solid 3px black; padding: 5px;">
+                                </div>
+                                <div class="card-footer mb-3">
+                                    <button type="button" class="btn btn-danger btn-lg" style="float: right;">
+                                        Excluir
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+                                </div>
+                            </div> -->
+
+
+
+
+
+
+
                         </div>
-                        <!-- <img src="../../files/banner1.jpg" alt="" width="800px"> -->
-
                     </div>
                 </div>
-            </div>
-            <div class="col-md-1">
+                <div class="col-md-1">
+                </div>
             </div>
         </div>
-    </div>
+        <br><br><br>
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <!-- Jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <!-- Jquery -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <!-- Axios -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <!-- Axios -->
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <!-- Mensagens -->
-    <script src="./../../public/js/Mensagens/Message.js"></script>
+        <!-- Mensagens -->
+        <script src="./../../public/js/Mensagens/Message.js"></script>
 
-    <!-- Máscaras -->
-    <script src="https://unpkg.com/imask"></script>
+        <!-- Máscaras -->
+        <script src="https://unpkg.com/imask"></script>
 
-    <!-- Requisições -->
-    <script src="./../../../app/requests/footer.js"></script>
+        <!-- Requisições -->
+        <script src="./../../../app/requests/controls.js"></script>
+        <script src="./../../../app/requests/slides.js"></script>
 
-    <script>
+        <script>
+           
+            getSlides()
 
-    </script>
+            
+        </script>
 
 </body>
 
