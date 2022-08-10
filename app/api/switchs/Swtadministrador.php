@@ -5,6 +5,7 @@ namespace App\api\switchs;
 use App\api\Session;
 use \App\api\classes\AdministradorClass;
 use App\api\classes\BancarioClass;
+use App\api\classes\CategoriasClass;
 use App\api\classes\EmpresaClass;
 use App\api\classes\FooterClass;
 use App\api\classes\GoogleMapsClass;
@@ -47,6 +48,26 @@ class Swtadministrador
 
             case "deletar-slide":
                 echo json_encode(SlidesClass::deletarSlide($values));
+                break;
+
+            case "get-categorias":
+                echo json_encode(CategoriasClass::getCategorias($values));
+                break;
+
+            case "deletar-categoria";
+                echo json_encode(CategoriasClass::geletarCategoria($values));
+                break;
+
+            case "adicionar-categoria":
+                echo json_encode(CategoriasClass::adicionarCategoria($values));
+                break;
+
+            case "get-one-categoria":
+                echo json_encode(CategoriasClass::getOneCategoria($values));
+                break;
+
+            case "update-categoria":
+                echo json_encode(CategoriasClass::updateCategoria($values));
                 break;
         }
     }

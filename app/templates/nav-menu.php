@@ -42,11 +42,11 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item" style="border-right: solid black 2px ; padding-right:5px; ">
-                                <a class="nav-link active" aria-current="page" href="#"> <i class="fa-solid fa-folder"></i> Categoria(s)</a>
+                                <a class="nav-link active" aria-current="page" href="Config-Categorias.php"> <i class="fa-solid fa-folder"></i> Categoria(s)</a>
                             </li>
 
                             <li class="nav-item" style="border-right: solid black 2px ; padding-right:5px; ">
-                                <a class="nav-link active" aria-current="page" href="#"> <i class="fa-solid fa-briefcase"></i> Administradores</a>
+                                <a class="nav-link active" aria-current="page" href=""> <i class="fa-solid fa-briefcase"></i> Administradores</a>
                             </li>
 
                             <li class="nav-item" style="border-right: solid black 2px ; padding-right:5px; ">

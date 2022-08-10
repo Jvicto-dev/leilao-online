@@ -8,4 +8,5 @@ $data = json_decode(file_get_contents('php://input'), true);
 $action = $data['action'];
 $values = $data['values'];
 
-Session::SelectController($action, filter_var_array($values, FILTER_SANITIZE_SPECIAL_CHARS));
+// Session::SelectController($action, filter_var_array($values, FILTER_SANITIZE_SPECIAL_CHARS));
+Session::SelectController($action, $values);
