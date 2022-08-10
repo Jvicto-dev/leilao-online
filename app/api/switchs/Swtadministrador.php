@@ -13,7 +13,7 @@ use App\api\Sql;
 
 class Swtadministrador
 {
-    public function switch($action, $values)
+    public static function switch($action, $values)
     {
         switch ($action) {
 

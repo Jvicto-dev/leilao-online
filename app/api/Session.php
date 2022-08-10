@@ -9,7 +9,7 @@ use \App\api\Sql;
 
 class Session
 {
-    public function SelectController($action, $values)
+    public static function SelectController($action, $values)
     {
         $cmd = "SELECT nivel_acesso FROM `users` WHERE id_users = ?";
         $response = Sql::line($cmd, [$_SESSION['user'][0]['id_users']]);

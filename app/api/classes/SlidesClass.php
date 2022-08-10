@@ -44,4 +44,24 @@ class SlidesClass
             ];
         }
     }
+
+    public static function newSlide($array)
+    {
+        $documento = AdministradorClass::insertFile($array);
+
+        $nome_arquivo = $documento[0];
+
+        $cmd = "INSERT INTO `slides` (`id_slides`, `slide`) VALUES (NULL, ?)";
+        $response = Sql::returnInsert($cmd, [$nome_arquivo]);
+
+        if ($documento[1] && $response[1]) {
+            return [
+                true, http_response_code(201)
+            ];
+        } else {
+            return [
+                false, http_response_code(500)
+            ];
+        }
+    }
 }

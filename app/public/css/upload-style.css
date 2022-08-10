@@ -24,7 +24,33 @@
     
 }
 
+
+
 .imgPhoto:hover {
+    background-color: rgb(180, 180, 180);
+    border: 5px solid #111;
+}
+
+
+
+
+
+.imgPhotoSlide {
+    /* margin-top: 10%; */
+    width: 600px;
+    height: 200px;
+    padding: 10px;
+    background-color: #eee;
+    border: 5px solid #ccc;
+    border-radius: 1%;
+    cursor: pointer;
+    transition: background .3s;
+    
+}
+
+
+
+.imgPhotoSlide:hover {
     background-color: rgb(180, 180, 180);
     border: 5px solid #111;
 }

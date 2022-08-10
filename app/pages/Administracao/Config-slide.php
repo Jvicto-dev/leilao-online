@@ -40,20 +40,40 @@ $titulo = "Configuração do slide";
                         </h5>
                     </div>
                     <div class="card-body">
-
+<!-- 
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="" class="form-label">Quantos slides ?</label>
 
                                 <div class="input-group mb-3 mt-1">
-                                    <input type="text" id="cep" name="cep" class="form-control" placeholder="ex: 3">
+                                    <input type="text" id="q_slides" name="cep" class="form-control" placeholder="ex: 3">
                                     <span class="input-group-append">
-                                        <button class="file-upload-browse btn btn-primary" type="button">Gerar</button>
+                                        <button class="file-upload-browse btn btn-primary" onclick="gerarDomNovosSlides()" type="button">Gerar</button>
                                     </span>
                                 </div>
 
                             </div>
-                        </div>
+
+
+                        </div> -->
+
+                        <div class="card">
+                                <button type="button" class="btn btn-light"><b>Novo slide</b></button>
+
+                                <div class="card-body">
+
+                                    <img src="./../../public/img/novo-slide.jpg" alt="Selecione uma imagem" id="slide" class="imgPhotoSlide">
+                                    <form id="my-form">
+                                        <input style="display: none;" type="file" id="flImageSlide" class="form-control mt-3">
+                                    </form>
+
+                                </div>
+                                <div class="card-footer">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" onclick="novoSlide()" class="btn btn-primary btn-lg mt-3">Enviar <i class="fa-solid fa-floppy-disk"></i></button>
+                                    </div>
+                                </div>
+                            </div>
 
                         <hr>
                         <h2>Slides Atuais:</h2><br>
@@ -63,20 +83,6 @@ $titulo = "Configuração do slide";
 
                             <div id="div_slides"></div>
 
-                            <!-- <div class="card">
-                                <div class="card-header mt-3">
-                                    <b>Banner 1</b>
-                                </div>
-                                <div class="card-body">
-                                    <img src="../../files/banner1.jpg" class="card-img-top" alt="..." width="50px;" style="border: solid 3px black; padding: 5px;">
-                                </div>
-                                <div class="card-footer mb-3">
-                                    <button type="button" class="btn btn-danger btn-lg" style="float: right;">
-                                        Excluir
-                                        <i class="fa-solid fa-trash-can"></i>
-                                    </button>
-                                </div>
-                            </div> -->
 
 
 
@@ -112,10 +118,15 @@ $titulo = "Configuração do slide";
         <script src="./../../../app/requests/slides.js"></script>
 
         <script>
-           
             getSlides()
 
-            
+            function gerarDomNovosSlides() {
+                var q_slides = $("#q_slides").val()
+
+
+                console.log(q_slides)
+
+            }
         </script>
 
 </body>

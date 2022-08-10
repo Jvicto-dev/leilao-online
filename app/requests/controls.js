@@ -40,7 +40,7 @@ function verifyValues(array_values) {
 }
 
 function verifyExtension(arq) {
-    let validos = /(\.jpg|\.png|\.gif|\.pdf|\.txt|\.doc|\.docx)$/i;
+    let validos = /(\.jpg|\.jpeg|\.png|\.gif|\.pdf|\.txt|\.doc|\.docx)$/i;
 
     if (validos.test(arq)) {
         return true

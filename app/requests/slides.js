@@ -87,3 +87,104 @@ function excluirSlide(id_slide) {
         }
     })
 }
+
+
+
+//NOVO SLIDE /////////////////////////////////////////////////////////
+
+let photo = document.getElementById('slide');
+let file = document.getElementById('flImageSlide');
+
+photo.addEventListener('click', () => {
+    file.click();
+});
+
+file.addEventListener('change', () => {
+
+    if (file.files.length <= 0) {
+        return;
+    }
+
+    let reader = new FileReader();
+
+    reader.onload = () => {
+        photo.src = reader.result;
+    }
+
+    reader.readAsDataURL(file.files[0]);
+});
+
+
+
+
+function novoSlide() {
+    const formData = new FormData();
+    const file = document.getElementById('flImageSlide');
+    const img = file.files[0];
+
+    formData.append('image', img);
+
+    // console.log(file.value)
+
+    if (file.files.length <= 0) {
+        Swal.fire(
+            'Ops !',
+            'Selecione o arquivo antes',
+            'warning'
+        )
+    } else {
+        if (!verifyExtension(file.value)) {
+            Swal.fire(
+                'Ops !',
+                'Esse tipo de arquivo não é permitido',
+                'error'
+            )
+        } else {
+            axios.post('../../Actions/ActionNewSlide.php', formData).then((res) => {
+
+          
+
+                if (res.status == 201) {
+                    Swal.fire({
+                        // position: 'center',
+                        icon: 'success',
+                        title: 'Slide adicionado com sucesso !',
+                        showConfirmButton: true,
+                    }).then((result) => {
+                        if (result.dismiss === Swal.DismissReason.timer) {
+                            location.reload()
+                        } else if (result.isConfirmed) {
+                            location.reload()
+                        } else {
+                            location.reload()
+                        }
+                    })
+                }
+            }).catch(function (error) {
+                if (error.response) {
+                    Swal.fire(
+                        'Ops',
+                        'Ocorreu um erro com a aplicação !',
+                        'error'
+                    );
+                    // A requisição foi feita e o servidor respondeu com um código de status
+                    // que sai do alcance de 2xx
+                    console.error(error.response.data);
+                    console.error(error.response.status);
+                    console.error(error.response.headers);
+                } else if (error.request) {
+                    // A requisição foi feita mas nenhuma resposta foi recebida
+                    // `error.request` é uma instância do XMLHttpRequest no navegador e uma instância de
+                    // http.ClientRequest no node.js
+                    console.error(error.request);
+                } else {
+                    // Alguma coisa acontenceu ao configurar a requisição que acionou este erro.
+                    console.error('Error', error.message);
+                }
+                console.error(error.config);
+            });
+
+        }
+    }
+
+}
