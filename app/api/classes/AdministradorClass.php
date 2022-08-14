@@ -94,7 +94,7 @@ class AdministradorClass
         // Criando o cadastro do cliente(pessoa juridica)
         $cliente = ClienteClass::cadastrarPessoaJuridica($obCliente);
 
-        
+
         // id do cliente para foreinKey 
         $ObEndereco->setIdUsuarioFk($cliente[0]);
 
@@ -117,5 +117,9 @@ class AdministradorClass
             header('Location:../../login.php');
         }
     }
-   
+
+    public static function getNumeros($array)
+    {   
+       
+    }
 }

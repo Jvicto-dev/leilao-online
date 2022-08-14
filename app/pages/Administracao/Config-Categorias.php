@@ -120,7 +120,6 @@ $titulo = "Configuração categorias";
                     <h1 id="icone_show"></h1>
 
 
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -129,6 +128,8 @@ $titulo = "Configuração categorias";
             </div>
         </div>
     </div>
+
+    <div id="teste"></div>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -154,6 +155,28 @@ $titulo = "Configuração categorias";
 
     <script>
         getCategorias()
+
+        function teste() {
+            axios.post('../../api/controller.php', {
+                action: "get-numeros",
+                values: [
+
+                ]
+            }).then((res) => {
+                console.log(res)
+
+                html = "";
+
+                res.data.forEach(element => {
+                    html += `<h1>${element}</h1>`;
+                });
+
+                $("#teste").html(html)
+
+            })
+        }
+
+        teste()
     </script>
 
 </body>

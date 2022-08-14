@@ -7,7 +7,13 @@ use \App\api\Sql;
 class CategoriasClass
 {
     public static function getCategorias($array)
-    {
+    {   
+
+        // echo "<pre>";
+        // print_r($array);
+        // echo "</pre>";
+        // exit;
+
         $cmd = "SELECT * FROM `categorias`";
         return Sql::use($cmd, $array);
     }

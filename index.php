@@ -303,8 +303,6 @@ session_start();
 
     <script src="./app/public/js/Mensagens/Message.js"></script>
 
-
-
 </body>
 
 </html>

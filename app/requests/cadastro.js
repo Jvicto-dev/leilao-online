@@ -81,11 +81,6 @@ function cadastroPessoaFisica() {
         }
     }
 
-
-
-
-
-
 }
 
 function cadastroPessoaJuridica() {

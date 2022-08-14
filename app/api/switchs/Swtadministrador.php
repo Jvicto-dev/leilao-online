@@ -9,6 +9,7 @@ use App\api\classes\CategoriasClass;
 use App\api\classes\EmpresaClass;
 use App\api\classes\FooterClass;
 use App\api\classes\GoogleMapsClass;
+use App\api\classes\LeiloeirosClass;
 use App\api\classes\SlidesClass;
 use App\api\Sql;
 
@@ -69,6 +70,11 @@ class Swtadministrador
             case "update-categoria":
                 echo json_encode(CategoriasClass::updateCategoria($values));
                 break;
+
+            case "get-numeros":
+                echo json_encode(LeiloeirosClass::getNumeros($values));
+                break;
+            
         }
     }
 }

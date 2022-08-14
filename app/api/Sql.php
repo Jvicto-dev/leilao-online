@@ -7,15 +7,15 @@ use \App\Database\Connect;
 class Sql
 {
 
-    public static function user()
-    {
-        return $_SESSION['user'][0]['id_users'];
-    }
+    // public static function user()
+    // {
+    //     return $_SESSION['user'][0]['id_users'];
+    // }
 
-    public static function schoolUser()
-    {
-        return $_SESSION['user'][0]['id_school_fk'];
-    }
+    // public static function schoolUser()
+    // {
+    //     return $_SESSION['user'][0]['id_school_fk'];
+    // }
 
     public static function use($cmd, $array)
     {
@@ -42,8 +42,6 @@ class Sql
         @$stmt->execute($array);
         $result = $pdo->lastInsertId();
         return $result;
-
-
 
     }
 

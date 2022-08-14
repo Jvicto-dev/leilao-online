@@ -1,10 +1,13 @@
 function getCategorias() {
     axios.post('../../api/controller.php', {
         action: "get-categorias",
-        values: []
+        values: [
+            
+        ],
     }).then((res) => {
         const data = res.data
         var html = ""
+
         data.forEach(cats => {
             html += `
                 <tr>
@@ -15,7 +18,6 @@ function getCategorias() {
                         <button type="button" class="btn btn-primary" onclick="editarCategoria(${cats.id_categorias})"><i class="fa-solid fa-pen-to-square"></i></button>
                         <button type="button" class="btn btn-danger" onclick="excluirCategoria(${cats.id_categorias})"><i class="fa-solid fa-trash-can"></i></button>
                     </td>
-
                 </tr>
                 `
         });
